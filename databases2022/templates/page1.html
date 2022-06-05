@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+
+</head>
+<style>
+html,
+body {
+    height: 200%;
+}
+body {
+    margin: 0;
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+.container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+}
+.inline {
+  display: inline;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: serif;
+}
+.link-button:focus {
+  outline: none;
+}
+.link-button:active {
+  color:red;
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+th {
+    text-align: left;
+}
+
+thead {
+    th {
+        background-color: #55608f;
+    }
+}
+
+tbody {
+    tr {
+        &:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    }
+    td {
+        position: relative;
+        &:hover {
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: rgba(255,255,255,0.2);
+                z-index: -1;
+            }
+        }
+    }
+}
+
+</style>
+<body>
+     <center>   <form action="#" method="POST">
+
+            <label for="start" style="color: rgba(255,255,255,0.3);font-size:25px;">Start date:</label>
+            <input type="date" id="start" name="start-date">
+            <label for="start" style="color: rgba(255,255,255,0.3); font-size:25px;">Ending date:</label>
+
+            <input type="date" id="end" name="end-date">
+
+            <label for="corporate" style="color: rgba(255,255,255,0.3);font-size:25px;">Choose Corporate Member:</label>
+            <select name="corporate" id="corporate">
+                <option></option>
+              {% for i in corporate_names %}
+                <option>{{i}}</option>
+                {% endfor %}
+            </select>
+            <input type = "submit" value="submit">
+        </form> </center>
+        <hr>
+
+        <br><br><br>
+<div class ="container">
+        <table >
+             <thead><tr>{% for column in header %}
+             <th scope="col" style="color: rgba(255,255,255,0.3);" >{{column}}</th>
+                 {% endfor %} </thead></tr>
+         </thead>
+            <tbody>
+                {% for row in values %}
+                <tr>
+                {% for row in row %}
+                <th scope="row"> {{row}}</th>
+                {% endfor %}
+                <th scope="row">
+
+
+
+    <form  action="#" method="POST">
+
+  <input type="hidden" name="proj_name" value='{{row[0]}}' >
+  <button type="submit" name="proj_name" value="" class="link-button">
+   Show Researchers
+  </button>
+</form>
+                </tr>
+                {% endfor %}
+            </tbody>
+         </table> </div>
+</body>
+</html>
+

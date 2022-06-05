@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Projects</title>
+
+</head>
+
+<body>
+        <form action="#" method="POST">
+
+            <label for="start">Start date:</label>
+            <input type="date" id="start" name="start-date">
+            <label for="end">End date:</label>
+            <input type="date" id="end" name="end-date">
+
+            <label for="corporate">Choose Corporate Member:</label>
+            <select name="corporate" id="corporate">
+                <option></option>
+              {% for i in corporate_names %}
+                <option>{{i}}</option>
+                {% endfor %}
+            </select>
+            <input type = "submit" value="submit">
+        </form>
+        <table >
+             <thead><tr>{% for column in header %}
+              <th scope="col">{{column}}</th>
+                 {% endfor %} <tr>
+         </thead>
+            <tbody>
+                {% for row in values %}
+                <tr>
+                {% for row in row %}
+                <th scope="row"> {{row}}</th>
+                {% endfor %}
+                 <a href="/showresearcher"> <th scope="row">  Show researchers  </th></a>
+                </tr>
+                {% endfor %}
+            </tbody>
+         </table>
+</body>
+</html>
+
